@@ -1,0 +1,344 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Warm showroom palette */
+  --color-ivory: var(--ivory);
+  --color-parchment: var(--parchment);
+  --color-limestone: var(--limestone);
+  --color-taupe: var(--taupe);
+  --color-clay: var(--clay);
+  --color-rust: var(--rust);
+  --color-olive: var(--olive);
+  --color-oak: var(--oak);
+  --color-walnut: var(--walnut);
+  --color-graphite: var(--graphite);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Tight", "Inter", sans-serif;
+  --font-editorial: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-duration-fast: 160ms;
+  --animate-duration-base: 240ms;
+  --animate-duration-slow: 320ms;
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Warm palette */
+  --ivory: #f6f1e8;
+  --parchment: #efe7d8;
+  --limestone: #e4dccb;
+  --taupe: #b8a996;
+  --clay: #b5745a;
+  --rust: #8f4a32;
+  --olive: #6b6a47;
+  --oak: #c8a97e;
+  --walnut: #4a3325;
+  --graphite: #2a2420;
+
+  --background: var(--ivory);
+  --foreground: var(--graphite);
+  --card: #fbf7ef;
+  --card-foreground: var(--graphite);
+  --popover: #fbf7ef;
+  --popover-foreground: var(--graphite);
+  --primary: var(--walnut);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--parchment);
+  --secondary-foreground: var(--graphite);
+  --muted: var(--parchment);
+  --muted-foreground: #7a6a5a;
+  --accent: var(--clay);
+  --accent-foreground: var(--ivory);
+  --destructive: #a33a2a;
+  --destructive-foreground: var(--ivory);
+  --border: rgba(74, 51, 37, 0.12);
+  --input: rgba(74, 51, 37, 0.15);
+  --ring: var(--clay);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--clay) 30%, transparent);
+    color: var(--graphite);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(74, 51, 37, 0.06) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(74, 51, 37, 0.05) 0, transparent 40%);
+  }
+}
+
+@utility placeholder-scene {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255, 244, 220, 0.9), transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(143, 74, 50, 0.18), transparent 60%),
+    linear-gradient(160deg, var(--parchment), var(--limestone) 70%, var(--taupe));
+}
+
+@utility placeholder-oak {
+  background:
+    repeating-linear-gradient(92deg, rgba(74, 51, 37, 0.14) 0 2px, transparent 2px 9px),
+    linear-gradient(170deg, #d4b78a, #a67f52);
+}
+@utility placeholder-walnut {
+  background:
+    repeating-linear-gradient(88deg, rgba(20, 10, 5, 0.28) 0 2px, transparent 2px 10px),
+    linear-gradient(160deg, #6b4a34, #3a251a);
+}
+@utility placeholder-boucle {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9) 0 3px, transparent 4px),
+    radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.85) 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.05) 0 3px, transparent 4px),
+    linear-gradient(160deg, #f2ead9, #e0d4bd);
+  background-size:
+    14px 14px,
+    18px 18px,
+    22px 22px,
+    100% 100%;
+}
+@utility placeholder-linen {
+  background:
+    repeating-linear-gradient(0deg, rgba(74, 51, 37, 0.08) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(74, 51, 37, 0.08) 0 1px, transparent 1px 4px),
+    linear-gradient(160deg, #c9a790, #b48b74);
+}
+@utility placeholder-stone {
+  background:
+    radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.5), transparent 50%),
+    radial-gradient(circle at 70% 20%, rgba(0, 0, 0, 0.08), transparent 50%),
+    linear-gradient(160deg, #d9d0c1, #b3a998);
+}
+@utility placeholder-leather {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(255, 220, 180, 0.35), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.2), transparent 50%),
+    linear-gradient(160deg, #8f5a3d, #5c3821);
+}
+@utility placeholder-metal {
+  background: linear-gradient(160deg, #6b5c50 0%, #a89785 30%, #6b5c50 55%, #4a3f36 80%);
+}
+@utility placeholder-room {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 240, 210, 0.7), transparent 45%),
+    linear-gradient(180deg, #ded1b8 0%, #c8b28e 55%, #8f7554 100%);
+}
+@utility placeholder-product {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.6), transparent 55%),
+    linear-gradient(160deg, var(--parchment), var(--limestone));
+}
+@utility placeholder-showroom {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 240, 210, 0.6), transparent 45%),
+    linear-gradient(180deg, #e8dcc4, #a08869 70%, #5c4634);
+}
+
+@keyframes hotspot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--clay) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.animate-hotspot {
+  animation: hotspot-pulse 2.2s ease-out 3;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes content-in {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-content-in {
+  animation: content-in 220ms var(--ease-out-soft) both;
+}
+
+@keyframes scene-in {
+  from {
+    transform: scale(1.012);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-scene-in {
+  animation: scene-in 280ms var(--ease-out-soft) both;
+}
+
+@keyframes badge-bump {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-badge-bump {
+  animation: badge-bump 220ms var(--ease-out-soft);
+}
+
+@keyframes ring-in {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-ring-in {
+  animation: ring-in 200ms var(--ease-out-soft) both;
+}
+
+/* Staged hero reveal — the room scene leads, planning detail follows. */
+.hero-reveal {
+  animation: content-in 300ms var(--ease-out-soft) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Sections start hidden only once the observer has claimed them, so a page
+   without JS or with reduced motion renders fully visible. */
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 300ms var(--ease-out-soft),
+    transform 300ms var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+  }
+  .animate-hotspot {
+    animation: none;
+  }
+}
