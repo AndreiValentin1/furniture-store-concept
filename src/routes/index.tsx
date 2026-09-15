@@ -96,9 +96,9 @@ function HomeHero() {
             </div>
           </div>
 
-          {/* Planning card overlap */}
+          {/* Planning card */}
           <div
-            className="hero-reveal lg:col-span-4 lg:-ml-10 lg:mt-8"
+            className="hero-reveal lg:col-span-4 lg:mt-8"
             style={{ "--reveal-delay": "200ms" } as React.CSSProperties}
           >
             <div className="rounded-2xl border border-walnut/12 bg-ivory p-5 shadow-[0_20px_50px_-30px_rgba(74,51,37,0.45)]">
@@ -152,7 +152,7 @@ function HomeHero() {
                 >
                   Explore rooms <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-2 lg:grid-cols-1 xl:grid-cols-2">
                   <Link
                     to="/planner"
                     className="rounded-md border border-walnut/15 bg-parchment px-3 py-2 text-center text-sm font-medium text-graphite hover:bg-limestone"
