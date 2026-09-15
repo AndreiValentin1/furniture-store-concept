@@ -172,7 +172,7 @@ function HomeHero() {
         </div>
 
         <div
-          className="hero-reveal mt-12 max-w-3xl lg:mt-16"
+          className="hero-reveal mt-12 max-w-4xl lg:mt-16"
           style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
         >
           <p className="font-editorial text-sm tracking-wide text-clay">
